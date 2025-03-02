@@ -318,6 +318,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<script src="bootstrap.bundle.min.js"></script>
 		<script src="tiny-slider.js"></script>
 		<script src="custom.js"></script>
+	<script>
+  window.dataLayer = window.dataLayer || [];
+  
+  // Очистка попередніх даних eCommerce
+  dataLayer.push({ ecommerce: null });
+
+  // Отримуємо всі продукти на сторінці
+  var products = document.querySelectorAll(".product-item");
+
+  // Формуємо масив товарів
+  var items = [];
+  products.forEach((product, index) => {
+    var itemName = product.querySelector(".product-title").innerText;
+    var itemPrice = parseFloat(product.querySelector(".product-price").innerText.replace("$", ""));
+    var itemImage = product.querySelector("img").getAttribute("src");
+
+    items.push({
+      item_id: "SKU_" + (index + 1),
+      item_name: itemName,
+      price: itemPrice,
+      index: index,
+      item_list_id: "shop_page",
+      item_list_name: "Shop Page",
+      item_brand: "Furni",
+      item_category: "Furniture",
+      item_variant: "default",
+      quantity: 1
+    });
+  });
+
+  // Відправляємо дані у dataLayer
+  dataLayer.push({
+    event: "view_item_list",
+    ecommerce: {
+      item_list_id: "shop_page",
+      item_list_name: "Shop Page",
+      items: items
+    }
+  });
+</script>
+
 	</body>
 
 </html>
