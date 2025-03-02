@@ -214,6 +214,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<script src="bootstrap.bundle.min.js"></script>
 		<script src="tiny-slider.js"></script>
 		<script src="custom.js"></script>
+
+		<script>
+	dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+dataLayer.push({
+  event: "purchase",
+  ecommerce: {
+    transaction_id: "T_12345",
+    // Sum of (price * quantity) for all items.
+    value: 350.00,
+    currency: "USD",
+    items: [
+    {
+      item_id: "12345",
+      item_name: "Top Up T-Shirt",
+      index: 0,
+      price: 250,
+      quantity: 1
+    },
+    {
+      item_id: "12335",
+      item_name: "Polo Shirt",
+      index: 0,
+      price: 100,
+      quantity: 1
+    }]
+  }
+});
+	</script>
 	</body>
 
 </html>
